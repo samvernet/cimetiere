@@ -259,6 +259,12 @@ const App: React.FC = () => {
         <div className="flex flex-col items-center gap-1 text-slate-300">
           <CloudSync className="w-6 h-6" />
           <span className="text-[9px] font-black uppercase">Sync</span>
+          {/* Ce div crée un espace de sécurité dynamique en bas de l'écran */}
+<div style={{ 
+  height: 'env(safe-area-inset-bottom)', 
+  backgroundColor: 'transparent',
+  width: '100%' 
+}} />
         </div>
       </nav>
     </div>
