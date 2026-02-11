@@ -241,7 +241,8 @@ const App: React.FC = () => {
         )}
       </main>
 
-   <nav className="bg-white border-t border-slate-200 shrink-0" style={{ paddingBottom: '32px' }}>
+ {/* BARRE DE NAVIGATION CORRIGÉE */}
+      <nav className="bg-white border-t border-slate-200 shrink-0" style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 25px)' }}>
         <div className="flex justify-around items-center p-4">
           <button onClick={() => setView(ViewMode.LIST)} className={`flex flex-col items-center gap-1 transition ${view === ViewMode.LIST ? 'text-blue-600' : 'text-slate-400'}`}>
             <List className="w-6 h-6" />
@@ -262,11 +263,6 @@ const App: React.FC = () => {
             <span className="text-[9px] font-black uppercase">Sync</span>
           </button>
         </div>
-      </nav>
-        </div>
-        
-        {/* ESPACE DE SÉCURITÉ POUR BARRE DE NAVIGATION ANDROID/IOS */}
-        <div style={{ height: 'env(safe-area-inset-bottom)', minHeight: '16px', width: '100%' }} />
       </nav>
     </div>
   );
