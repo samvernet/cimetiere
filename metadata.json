@@ -1,0 +1,8 @@
+{
+  "name": "Cimetière Numérique - Collecteur OCR",
+  "description": "Une application pour numériser les informations des pierres tombales par photo, avec transcription automatique via IA et stockage local pour un usage terrain.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
