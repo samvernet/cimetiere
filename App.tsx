@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Camera, List, Plus, Download, CloudSync, Map as MapIcon, Table, Loader2, Settings, X as CloseIcon, Link as LinkIcon } from 'lucide-react';
 import { GraveRecord, ViewMode, SteleCondition } from './types.ts';
@@ -103,10 +102,8 @@ const App: React.FC = () => {
     }
   };
 
-  const conditions: SteleCondition[] = ['Très bon', 'Bon', 'Moyen', 'Mauvais', 'Très mauvais'];
-
   return (
-    <div className="h-screen flex flex-col max-w-2xl mx-auto shadow-xl bg-white border-x border-slate-200 overflow-hidden">
+    <div className="min-h-screen flex flex-col max-w-2xl mx-auto shadow-xl bg-white border-x border-slate-200 overflow-hidden">
       <header className="bg-slate-900 text-white p-4 shrink-0 flex justify-between items-center shadow-md">
         <div>
           <h1 className="text-xl font-bold flex items-center gap-2">
@@ -244,28 +241,28 @@ const App: React.FC = () => {
         )}
       </main>
 
-      <nav className="bg-white border-t border-slate-200 p-4 shrink-0 flex justify-around items-end">
-        <button onClick={() => setView(ViewMode.LIST)} className={`flex flex-col items-center gap-1 transition ${view === ViewMode.LIST ? 'text-blue-600' : 'text-slate-400'}`}>
-          <List className="w-6 h-6" />
-          <span className="text-[9px] font-black uppercase">Liste</span>
-        </button>
-        <button onClick={() => setView(ViewMode.MAP)} className={`flex flex-col items-center gap-1 transition ${view === ViewMode.MAP ? 'text-blue-600' : 'text-slate-400'}`}>
-          <MapIcon className="w-6 h-6" />
-          <span className="text-[9px] font-black uppercase">Carte</span>
-        </button>
-        <button onClick={() => setView(ViewMode.CAPTURE)} className="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center -mb-2 shadow-2xl active:scale-90 transition border-4 border-white">
-          <Plus className="w-8 h-8" />
-        </button>
-        <div className="flex flex-col items-center gap-1 text-slate-300">
-          <CloudSync className="w-6 h-6" />
-          <span className="text-[9px] font-black uppercase">Sync</span>
-          {/* Ce div crée un espace de sécurité dynamique en bas de l'écran */}
-<div style={{ 
-  height: 'env(safe-area-inset-bottom)', 
-  backgroundColor: 'transparent',
-  width: '100%' 
-}} />
+      <nav className="bg-white border-t border-slate-200 shrink-0">
+        {/* Barre de boutons de navigation */}
+        <div className="flex justify-around items-end p-4">
+          <button onClick={() => setView(ViewMode.LIST)} className={`flex flex-col items-center gap-1 transition ${view === ViewMode.LIST ? 'text-blue-600' : 'text-slate-400'}`}>
+            <List className="w-6 h-6" />
+            <span className="text-[9px] font-black uppercase">Liste</span>
+          </button>
+          <button onClick={() => setView(ViewMode.MAP)} className={`flex flex-col items-center gap-1 transition ${view === ViewMode.MAP ? 'text-blue-600' : 'text-slate-400'}`}>
+            <MapIcon className="w-6 h-6" />
+            <span className="text-[9px] font-black uppercase">Carte</span>
+          </button>
+          <button onClick={() => setView(ViewMode.CAPTURE)} className="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center -mb-2 shadow-2xl active:scale-90 transition border-4 border-white">
+            <Plus className="w-8 h-8" />
+          </button>
+          <button className="flex flex-col items-center gap-1 text-slate-300">
+            <CloudSync className="w-6 h-6" />
+            <span className="text-[9px] font-black uppercase">Sync</span>
+          </button>
         </div>
+        
+        {/* ESPACE DE SÉCURITÉ POUR BARRE DE NAVIGATION ANDROID/IOS */}
+        <div style={{ height: 'env(safe-area-inset-bottom)', minHeight: '16px', width: '100%' }} />
       </nav>
     </div>
   );
